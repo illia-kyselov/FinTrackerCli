@@ -4,7 +4,7 @@ import MainHeader from '../components/MainHeader';
 import BalanceTitle from '../components/BalanceTitle';
 import ExpenseList from '../components/ExpenseList';
 import AddExpenseButton from '../components/UI/AddExpenseButton';
-import { Colors, Padding, PaddingTop } from '../styles/tokens';
+import { Colors, Padding } from '../styles/tokens';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../types/types';
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.primary,
-        paddingHorizontal: 16,
-        paddingTop: PaddingTop.pt50,
+        paddingHorizontal: Padding.p20,
+        paddingVertical: 16,
         paddingBottom: Padding.p20,
     },
 });

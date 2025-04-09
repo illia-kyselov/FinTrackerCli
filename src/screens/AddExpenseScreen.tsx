@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import TabsButtons from '../components/TabsButtons';
 import ExpenseForm from '../components/ExpenseForm';
-import { Colors, Padding, PaddingTop } from '../styles/tokens';
+import { Colors, Padding } from '../styles/tokens';
 import { RootStackParamList } from '../types/types';
 import BackButtonHeader from '../components/UI/BackButtonHeader';
 
@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.primary,
-        paddingTop: PaddingTop.pt50,
-        padding: Padding.p20,
+        paddingHorizontal: Padding.p20,
     },
 });

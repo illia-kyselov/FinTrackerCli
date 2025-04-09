@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Input from '../components/UI/Input';
 import SubmitButton from '../components/UI/SubmitButton';
 import CategoryPicker from '../components/UI/CategoryPicker';
-import { Colors, FontSize, Gap, MarginBottom, PaddingTop, Padding } from '../styles/tokens';
+import { Colors, FontSize, Gap, MarginBottom, PaddingTop } from '../styles/tokens';
 import { useAddExpense } from '../hooks/useAddExpense';
 import { AddExpenseScreenNavigationProp } from '../types/types';
 import { RootState } from '../store/store';

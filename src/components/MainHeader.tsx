@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Colors, MarginBottom } from '../styles/tokens';
+import PersonCircleSVG from '../assets/PersonCircleSVG.jsx';
+import StatsSVG from '../assets/StatsSVG.jsx';
+import SettingsSVG from '../assets/SettingsSVG.jsx';
+import { Colors } from '../styles/tokens';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../types/types';
@@ -29,17 +31,17 @@ const MainHeader: React.FC = () => {
                 {userAvatar ? (
                     <Image source={{ uri: userAvatar }} style={styles.avatarImage} />
                 ) : (
-                    <Ionicons name="person-circle-outline" size={30} color={Colors.greenText} />
+                    <PersonCircleSVG width={30} height={30} fill={Colors.greenText} />
                 )}
             </TouchableOpacity>
             <View style={styles.rightIcons}>
                 {hasExpenses && (
                     <TouchableOpacity onPress={() => navigation.navigate('Analytics')} style={styles.iconButton}>
-                        <Ionicons name="stats-chart-outline" size={30} color={Colors.greenText} />
+                        <StatsSVG width={30} height={30} fill={Colors.greenText} />
                     </TouchableOpacity>
                 )}
                 <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-                    <Ionicons name="settings-outline" size={30} color={Colors.greenText} />
+                    <SettingsSVG width={30} height={30} fill={Colors.greenText} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -51,8 +53,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: MarginBottom.mb20,
-        paddingHorizontal: 10,
+        marginBottom: 50,
     },
     rightIcons: {
         flexDirection: 'row',

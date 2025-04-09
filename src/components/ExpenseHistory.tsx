@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { categoryIcons } from '../styles/categoryIcons';
 import { PaddingVertical, MarginBottom, FontSize, Colors } from '../styles/tokens';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
+import PricetagSVG from '../assets/PricetagSVG';
 
 interface ExpenseHistoryProps {
     groupedExpenses: Array<{ category: string; amount: number; transactions: number }>;
@@ -18,28 +18,32 @@ const ExpenseHistory: React.FC<ExpenseHistoryProps> = ({ groupedExpenses, pieDat
 
     return (
         <View style={styles.history}>
-            {filteredGroupedExpenses.map((item, index) => (
-                <View key={index} style={styles.expenseItem}>
-                    <Ionicons
-                        name={categoryIcons[item.category]}
-                        size={22}
-                        color={pieData[index].color}
-                        style={styles.icon}
-                    />
-                    <View>
-                        <Text style={styles.categoryText}>{item.category}</Text>
-                        <Text style={styles.transactionCountText}>Transactions: {item.transactions}</Text>
+            {filteredGroupedExpenses.map((item, index) => {
+                const Icon = categoryIcons[item.category] || PricetagSVG;
+                return (
+                    <View key={index} style={styles.expenseItem}>
+                        <Icon
+                            width={22}
+                            height={22}
+                            fill={pieData[index].color}
+                            stroke={pieData[index].color}
+                            style={styles.icon}
+                        />
+                        <View>
+                            <Text style={styles.categoryText}>{item.category}</Text>
+                            <Text style={styles.transactionCountText}>Transactions: {item.transactions}</Text>
+                        </View>
+                        <View style={styles.amountContainer}>
+                            <Text style={styles.amountText}>
+                                -{Math.abs(item.amount).toFixed(0)} {currencySymbol}
+                            </Text>
+                            <Text style={styles.percentageText}>
+                                {pieData[index].value === 0 ? '< 1%' : `${pieData[index].value}%`}
+                            </Text>
+                        </View>
                     </View>
-                    <View style={styles.amountContainer}>
-                        <Text style={styles.amountText}>
-                            -{Math.abs(item.amount).toFixed(0)} {currencySymbol}
-                        </Text>
-                        <Text style={styles.percentageText}>
-                            {pieData[index].value === 0 ? '< 1%' : `${pieData[index].value}%`}
-                        </Text>
-                    </View>
-                </View>
-            ))}
+                );
+            })}
         </View>
     );
 };

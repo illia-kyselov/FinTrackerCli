@@ -2,7 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Colors, Radius } from '../../styles/tokens';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import CheckmarkSVG from '../../assets/CheckmarkSVG.jsx';
+
+const ArrowUpIcon = () => (
+    <View style={[styles.arrowIcon, styles.arrowUp]} />
+);
+
+const ArrowDownIcon = () => (
+    <View style={[styles.arrowIcon, styles.arrowDown]} />
+);
+
+const TickIcon = () => (
+    <CheckmarkSVG width={18} height={18} fill={Colors.greenText} />
+);
 
 interface CategoryPickerProps {
     selectedValue: string;
@@ -24,9 +36,9 @@ const CategoryPicker: React.FC<CategoryPickerProps> = ({
     );
 
     useEffect(() => {
-        if (categories.indexOf(selectedValue) === -1) {
-            setValue("Uncategorized");
-            onValueChange("Uncategorized");
+        if (!categories.includes(selectedValue)) {
+            setValue('Uncategorized');
+            onValueChange('Uncategorized');
         } else {
             setItems(categories.map((category) => ({ label: category, value: category })));
         }
@@ -46,24 +58,19 @@ const CategoryPicker: React.FC<CategoryPickerProps> = ({
                 value={value}
                 items={items}
                 setOpen={setOpen}
-                setValue={(value) => {
-                    setValue(value);
-                    onValueChange(value as unknown as string);
+                setValue={(val) => {
+                    setValue(val);
+                    onValueChange(val as unknown as string);
                 }}
                 setItems={setItems}
                 style={styles.dropdown}
                 dropDownContainerStyle={styles.dropDownContainer}
                 textStyle={styles.text}
-                ArrowUpIconComponent={() => (
-                    <View style={[styles.arrowIcon, styles.arrowUp]} />
-                )}
-                ArrowDownIconComponent={() => (
-                    <View style={[styles.arrowIcon, styles.arrowDown]} />
-                )}
-                TickIconComponent={() => (
-                    <Ionicons name="checkmark" size={18} color={Colors.greenText} />
-                )}
+                ArrowUpIconComponent={ArrowUpIcon}
+                ArrowDownIconComponent={ArrowDownIcon}
+                TickIconComponent={TickIcon}
                 selectedItemLabelStyle={styles.selectedItemLabel}
+                listMode="SCROLLVIEW"
             />
         </View>
     );

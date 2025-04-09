@@ -5,8 +5,8 @@ import { RootState } from '../store/store';
 import BackButtonHeader from '../components/UI/BackButtonHeader';
 import PieChartComponent from '../components/PieChartComponent';
 import ExpenseHistory from '../components/ExpenseHistory';
-import { Colors, FontSize, MarginTop, Padding, PaddingTop } from '../styles/tokens';
-import { GroupedExpense, Category, Expense, RootStackParamList } from '../types/types';
+import { Colors, FontSize, Padding } from '../styles/tokens';
+import { GroupedExpense, Category, Expense } from '../types/types';
 import { groupExpenses } from '../helpers/groupExpenses';
 import { calculateTotalExpenses } from '../helpers/calculateTotalExpenses';
 import { calculatePieData } from '../helpers/calculatePieData';
@@ -24,9 +24,7 @@ const AnalyticsScreen: React.FC = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.headerContainer}>
-                <BackButtonHeader />
-            </View>
+            <BackButtonHeader />
             <ScrollView>
                 {hasData ? (
                     <View style={styles.chartContainer}>
@@ -45,19 +43,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.primary,
-        paddingTop: PaddingTop.pt50,
-        padding: Padding.p20,
-    },
-    headerContainer: {
-        width: '100%',
+        paddingHorizontal: Padding.p20,
     },
     chartContainer: {
         alignItems: 'center',
+        marginTop: 50,
     },
     noDataText: {
         color: Colors.greenText,
         textAlign: 'center',
-        marginTop: MarginTop.mt20,
         fontSize: FontSize.fs16,
     },
 });

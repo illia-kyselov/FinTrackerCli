@@ -3,11 +3,12 @@ import { View, Image, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView } f
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
 import { setAvatar, setName, setEmail } from '../store/slices/userSlice';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import ImagesSVG from '../assets/ImagesSVG.jsx';
+import AddSVG from '../assets/AddSVG.jsx';
 import Input from '../components/UI/Input';
 import BackButtonHeader from '../components/UI/BackButtonHeader';
 import SubmitButton from '../components/UI/SubmitButton';
-import { Colors, Padding, Radius, MarginBottom } from '../styles/tokens';
+import { Colors, Padding, MarginBottom } from '../styles/tokens';
 import { useImagePicker } from '../hooks/useImagePicker';
 import { useNavigation } from '@react-navigation/native';
 
@@ -39,31 +40,29 @@ const ProfileScreen: React.FC = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.headerContainer}>
+            <View style={styles.headerContainer} >
                 <BackButtonHeader />
             </View>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
-                <View style={styles.content}>
-                    <View style={styles.avatarContainer}>
-                        <TouchableOpacity style={styles.avatarWrapper} onPress={handlePickImage}>
-                            {newAvatar ? (
-                                <>
-                                    <Image source={{ uri: newAvatar }} style={styles.avatar} />
-                                    <View style={styles.overlayIcon}>
-                                        <Ionicons name="images-outline" size={40} color={Colors.greenText} />
-                                    </View>
-                                </>
-                            ) : (
-                                <View style={styles.avatarPlaceholder}>
-                                    <Ionicons name="add-outline" size={40} color={Colors.greenText} />
+                <View style={styles.avatarContainer}>
+                    <TouchableOpacity style={styles.avatarWrapper} onPress={handlePickImage}>
+                        {newAvatar ? (
+                            <>
+                                <Image source={{ uri: newAvatar }} style={styles.avatar} />
+                                <View style={styles.overlayIcon}>
+                                    <ImagesSVG width={40} height={40} fill={Colors.greenText} />
                                 </View>
-                            )}
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <Input placeholder="Your name" value={newName} onChangeText={setNewName} style={styles.inputGap} />
-                        <Input placeholder="you@example.com" value={newEmail} onChangeText={setNewEmail} style={styles.inputGap} />
-                    </View>
+                            </>
+                        ) : (
+                            <View style={styles.avatarPlaceholder}>
+                                <AddSVG width={40} height={40} fill={Colors.greenText} />
+                            </View>
+                        )}
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.inputContainer}>
+                    <Input placeholder="Your name" value={newName} onChangeText={setNewName} style={styles.inputGap} />
+                    <Input placeholder="you@example.com" value={newEmail} onChangeText={setNewEmail} style={styles.inputGap} />
                 </View>
             </ScrollView>
             <View style={styles.buttonContainer}>
@@ -77,18 +76,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.primary,
-        paddingHorizontal: Padding.p20,
         justifyContent: 'space-between',
+        paddingHorizontal: Padding.p20,
     },
     headerContainer: {
         width: '100%',
-        marginLeft: 16,
     },
     scrollContainer: {
         flexGrow: 1,
-    },
-    content: {
-        marginHorizontal: 20,
     },
     avatarContainer: {
         alignItems: 'center',
@@ -131,7 +126,6 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         marginBottom: 36,
-        marginHorizontal: 20,
     },
 });
 

@@ -1,22 +1,16 @@
-// src/screens/SettingsScreen.tsx
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
 import { setCurrency } from '../store/slices/userSlice';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import RepeatSVG from '../assets/RepeatSVG.jsx';
+import ChevronForwardSVG from '../assets/ChevronForwardSVG.jsx';
 import BackButtonHeader from '../components/UI/BackButtonHeader';
-import { Colors, FontSize, Padding, Radius, MarginBottom } from '../styles/tokens';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../types/types';
-
-type NavigationProp = StackNavigationProp<RootStackParamList, 'Settings'>;
+import { Colors, FontSize, Padding, Radius } from '../styles/tokens';
 
 const SettingsScreen: React.FC = () => {
     const dispatch = useDispatch();
-    const navigation = useNavigation<NavigationProp>();
     const currency = useSelector((state: RootState) => state.user.currency);
 
     const switchCurrency = () => {
@@ -38,7 +32,7 @@ const SettingsScreen: React.FC = () => {
                             <Text style={styles.label}>Preferred Currency</Text>
                             <View style={styles.currencyInfo}>
                                 <Text style={styles.currencyValue}>{currency}</Text>
-                                <Ionicons name="repeat" size={20} color={Colors.greenText} />
+                                <RepeatSVG width={20} height={20} fill={Colors.greenText} />
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -48,7 +42,7 @@ const SettingsScreen: React.FC = () => {
                     <TouchableOpacity>
                         <View style={styles.row}>
                             <Text style={styles.label}>Privacy Policy</Text>
-                            <Ionicons name="chevron-forward-outline" size={20} color={Colors.greenText} />
+                            <ChevronForwardSVG width={20} height={20} fill={Colors.greenText} />
                         </View>
                     </TouchableOpacity>
 
@@ -57,7 +51,7 @@ const SettingsScreen: React.FC = () => {
                     <TouchableOpacity>
                         <View style={styles.row}>
                             <Text style={styles.label}>Terms of Use</Text>
-                            <Ionicons name="chevron-forward-outline" size={20} color={Colors.greenText} />
+                            <ChevronForwardSVG width={20} height={20} fill={Colors.greenText} />
                         </View>
                     </TouchableOpacity>
 
@@ -66,7 +60,7 @@ const SettingsScreen: React.FC = () => {
                     <TouchableOpacity>
                         <View style={styles.row}>
                             <Text style={styles.label}>About Developer</Text>
-                            <Ionicons name="chevron-forward-outline" size={20} color={Colors.greenText} />
+                            <ChevronForwardSVG width={20} height={20} fill={Colors.greenText} />
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -79,13 +73,13 @@ const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
         backgroundColor: Colors.primary,
+        paddingHorizontal: Padding.p20,
     },
     headerContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: Padding.p20,
-        paddingVertical: 16,
         backgroundColor: Colors.primary,
+        paddingBottom: 50,
     },
     headerSide: {
         width: 80,
@@ -93,13 +87,13 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         flex: 1,
+        marginLeft: 40,
         textAlign: 'center',
         fontSize: FontSize.fs22,
         fontWeight: 'bold',
         color: Colors.greenText,
     },
     scrollContent: {
-        paddingHorizontal: Padding.p20,
         paddingBottom: 40,
         backgroundColor: Colors.primary,
     },

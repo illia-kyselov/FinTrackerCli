@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Colors, FontSize, MarginBottom, MarginRight, PaddingVertical } from '../styles/tokens';
 import { categoryIcons } from '../styles/categoryIcons';
 import { useSelector } from 'react-redux';
@@ -15,15 +14,19 @@ interface ExpenseDescriptionProps {
 const ExpenseDescription: React.FC<ExpenseDescriptionProps> = ({ category, description, amount }) => {
     const currency = useSelector((state: RootState) => state.user.currency);
     const currencySymbol = currency === 'USD' ? '$' : '€';
+    const Icon = categoryIcons[category];
 
     return (
         <View style={styles.expenseDescription}>
-            <Ionicons
-                name={categoryIcons[category] || 'pricetag-outline'}
-                size={22}
-                color={Colors.greenText}
-                style={styles.icon}
-            />
+            {Icon && (
+                <Icon
+                    width={22}
+                    height={22}
+                    fill={Colors.greenText}
+                    stroke={Colors.greenText}
+                    style={styles.icon}
+                />
+            )}
             <View>
                 <Text style={styles.expenseText}>{category}</Text>
                 {description ? <Text style={styles.subText}>{description}</Text> : null}

@@ -1,12 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import AddCircleSVG from '../../assets/AddCircleSVG.jsx';
 import { Colors, Radius } from '../../styles/tokens';
 
 const AddExpenseButton: React.FC<{ onPress: () => void }> = ({ onPress }) => {
     return (
         <TouchableOpacity onPress={onPress} style={styles.addIcon}>
-            <Ionicons name="add-circle-outline" size={60} color={Colors.greenText} />
+            <AddCircleSVG width={60} height={60} stroke={Colors.greenText} />
             <View style={styles.blurBackground} />
         </TouchableOpacity>
     );

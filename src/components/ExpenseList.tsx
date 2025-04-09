@@ -28,15 +28,11 @@ const ExpenseList: React.FC = () => {
                     Oops... No expense data available yet
                 </Text>
             }
-            contentContainerStyle={styles.listContainer}
         />
     );
 };
 
 const styles = StyleSheet.create({
-    listContainer: {
-        marginHorizontal: 16,
-    },
     noExpensesText: {
         color: Colors.greenText,
         textAlign: 'center',
