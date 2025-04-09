@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 50,
+        marginHorizontal: 20,
     },
     rightIcons: {
         flexDirection: 'row',

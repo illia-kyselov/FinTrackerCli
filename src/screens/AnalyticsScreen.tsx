@@ -11,6 +11,7 @@ import { groupExpenses } from '../helpers/groupExpenses';
 import { calculateTotalExpenses } from '../helpers/calculateTotalExpenses';
 import { calculatePieData } from '../helpers/calculatePieData';
 import { memoizedExpenseCategories } from '../store/selectors/expensesSelectors';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const AnalyticsScreen: React.FC = () => {
     const expenseCategories: Category[] = useSelector(memoizedExpenseCategories);
@@ -23,7 +24,7 @@ const AnalyticsScreen: React.FC = () => {
     const hasData = groupedExpenses.length > 0 && totalExpenses > 0;
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <BackButtonHeader />
             <ScrollView>
                 {hasData ? (
@@ -35,7 +36,7 @@ const AnalyticsScreen: React.FC = () => {
                     <Text style={styles.noDataText}>No expense data added...</Text>
                 )}
             </ScrollView>
-        </View>
+        </SafeAreaView>
     );
 };
 

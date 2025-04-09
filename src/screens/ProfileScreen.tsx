@@ -81,9 +81,11 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         width: '100%',
+        marginHorizontal: 20,
     },
     scrollContainer: {
         flexGrow: 1,
+        marginHorizontal: 20,
     },
     avatarContainer: {
         alignItems: 'center',
@@ -126,6 +128,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         marginBottom: 36,
+        marginHorizontal: 20,
     },
 });
 

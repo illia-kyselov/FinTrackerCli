@@ -82,7 +82,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ type, navigation }) => {
                     </View>
                 </View>
             </ScrollView>
-            <View style={styles.buttonContainer}>
+            <View>
                 <SubmitButton
                     onPress={handleSubmit}
                     text="Add"
@@ -118,9 +118,6 @@ const styles = StyleSheet.create({
         color: Colors.error,
         fontSize: FontSize.fs12,
         marginTop: MarginBottom.mb5,
-    },
-    buttonContainer: {
-        marginBottom: 36,
     },
 });
 
